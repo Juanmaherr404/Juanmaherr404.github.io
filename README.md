@@ -40,6 +40,7 @@ npm install
 ### 5. Build, serve, watch and test
 
 ```
+npm run test
 npm run watch
 ```
 
